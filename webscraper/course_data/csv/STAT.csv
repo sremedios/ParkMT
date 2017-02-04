@@ -1,0 +1,14 @@
+Sections Found,,,,,,,,,,,,,,,,,,,
+STAT-Statistics,,,,,,,,,,,,,,,,,,,
+Select,CRN,Subj,Crse,Sec,Cmp,Cred,Title,Days,Time,Cap,Act,Rem,XL Cap,XL Act,XL Rem,Instructor,Date (MM/DD),Location,Attribute
+NR,10817,STAT,4190,1,24M,3,Mathematical Statistics II,TR,09:40 am-11:05 am,21,10,11,0,0,0,Lisa Bloomer Green (P),01/17-05/04,KOM 205,Credit from 4-Year College and Upper-Division Work
+NR,15162,STAT,4320,1,24M,3,Probability and Stochastic Processes,MWF,12:40 pm-01:35 pm,24,4,20,29,6,23,Ping Zhang (P),01/17-05/04,KOM 221,Credit from 4-Year College and Upper-Division Work
+NR,17115,STAT,4600,1,24M,3,Problems in Statistics: Bayesian Theory,TR,01:00 pm-02:25 pm,19,14,5,25,15,10,Dennis P Walsh (P),01/17-05/04,KOM 205,Credit from 4-Year College and Upper-Division Work
+NR,12505,STAT,5140,1,24M,3,Probabilistic and Statistical Reasoning,M,04:30 pm-07:30 pm,25,16,9,0,0,0,Nancy J McCormick (P),01/17-05/04,KOM 200,Credit from 4-Year College and Upper-Division Work
+NR,15163,STAT,5320,1,24M,3,Probability and Stochastic Processes,MWF,12:40 pm-01:35 pm,5,2,3,29,6,23,Ping Zhang (P),01/17-05/04,KOM 221,
+NR,17116,STAT,5600,1,24M,3,Problems in Statistics: Bayesian Theory,TR,01:00 pm-02:25 pm,6,1,5,25,15,10,Dennis P Walsh (P),01/17-05/04,KOM 205,
+NR,15636,STAT,6020,D01,24M,3,Introduction to Biostatistics,,TBA,20,9,11,0,0,0,Lisa Bloomer Green (P),01/17-05/04,TBA TBA,Distance Learning and Distance Education Fee-GR and Credit from 4-Year College and Upper-Division Work
+NR,13293,STAT,6180,1,24M,3,Advanced Mathematical Statistics II,W,04:30 pm-07:30 pm,29,8,21,0,0,0,Ping Zhang (P),01/17-05/04,KOM 200,
+NR,13543,STAT,6520,2,24M,3,Advanced Biostatistical Methods,R,04:30 pm-07:30 pm,25,6,19,0,0,0,Ginger Holmes Rowell (P),01/17-05/04,KOM 221,
+NR,16780,STAT,6605,1,24M,3,Problems in Statistics: SAS Programming,T,04:30 pm-07:30 pm,29,13,16,0,0,0,Yeqian Liu (P),01/17-05/04,KOM 221,
+NR,15637,STAT,7020,D01,24M,3,Introduction to Biostatistics,,TBA,5,1,4,0,0,0,Lisa Bloomer Green (P),01/17-05/04,TBA TBA,Distance Learning and Distance Education Fee-GR

@@ -1,0 +1,23 @@
+Sections Found,,,,,,,,,,,,,,,,,,,
+PGEO-Physical Geography,,,,,,,,,,,,,,,,,,,
+Select,CRN,Subj,Crse,Sec,Cmp,Cred,Title,Days,Time,Cap,Act,Rem,XL Cap,XL Act,XL Rem,Instructor,Date (MM/DD),Location,Attribute
+NR,14076,PGEO,1030,1,24M,4,Physical Geography,MWF,09:10 am-10:05 am,24,10,14,0,0,0,Patricia Jean Boda (P),01/17-05/04,DSB 207,Credit from 4-Year College
+,,,,,,,,M,12:40 pm-02:40 pm,,,,,,,Patricia Jean Boda (P),01/17-05/04,DSB 207,Credit from 4-Year College
+NR,14431,PGEO,3000,1,24M,3,Maps and Mapping,TR,09:40 am-11:05 am,24,8,16,0,0,0,Patricia Jean Boda (P),01/17-05/04,DSB 208,Credit from 4-Year College and Upper-Division Work
+NR,14429,PGEO,4000,1,24M,3,Climatology and Climate Change,MWF,03:00 pm-03:55 pm,32,10,22,0,0,0,James A Henry (P),01/17-05/04,DSB 103,Credit from 4-Year College and Upper-Division Work
+NR,14430,PGEO,4010,1,24M,3,Biogeography,TR,11:20 am-12:45 pm,32,10,22,0,0,0,Patricia Jean Boda (P),01/17-05/04,DSB 103,Credit from 4-Year College and Upper-Division Work
+NR,14078,PGEO,4490,1,24M,4,Remote Sensing,MWF,10:20 am-12:00 pm,24,18,6,0,0,0,James A Henry (P),01/17-05/04,DSB 208,Credit from 4-Year College and Upper-Division Work
+C,14079,PGEO,4510,1,24M,4,Laboratory Problems in Remote Sensing,,TBA,5,6,-1,0,0,0,James A Henry (P),01/17-05/04,TBA TBA,Credit from 4-Year College and Upper-Division Work
+NR,14080,PGEO,4530,1,24M,3,Geographic Information Systems,T,11:20 am-01:20 pm,12,8,4,32,21,11,Jeremy W Aber (P),01/17-05/04,DSB 208,Credit from 4-Year College and Upper-Division Work
+,,,,,,,,T,02:40 pm-04:05 pm,,,,,,,Jeremy W Aber (P),01/17-05/04,DSB 101,Credit from 4-Year College and Upper-Division Work
+C,14081,PGEO,4530,2,24M,3,Geographic Information Systems,T,02:40 pm-04:05 pm,12,12,0,32,21,11,Jeremy W Aber (P),01/17-05/04,DSB 101,Credit from 4-Year College and Upper-Division Work
+,,,,,,,,R,11:20 am-01:20 pm,,,,,,,Jeremy W Aber (P),01/17-05/04,DSB 208,Credit from 4-Year College and Upper-Division Work
+NR,14082,PGEO,4560,1,24M,3,Intermediate Geographic Information Systems,MW,06:00 pm-07:25 pm,24,8,16,30,12,18,Jeremy W Aber (P),01/17-05/04,DSB 208,Credit from 4-Year College and Upper-Division Work
+NR,14085,PGEO,5530,2,24M,4,Geographic Information Systems,T,02:40 pm-04:05 pm,4,1,3,32,21,11,Jeremy W Aber (P),01/17-05/04,DSB 101,
+,,,,,,,,R,11:20 am-01:20 pm,,,,,,,Jeremy W Aber (P),01/17-05/04,DSB 208,
+NR,14083,PGEO,5560,1,24M,3,Intermediate Geographic Information Systems,MW,06:00 pm-07:25 pm,6,4,2,30,12,18,Jeremy W Aber (P),01/17-05/04,DSB 208,
+NR,16480,PGEO,6050,1,24M,3,Programming for Geospatial Database Applications,R,06:00 pm-09:00 pm,24,13,11,0,0,0,Henrique Garcia Momm (P),01/17-05/04,DSB 208,
+NR,14631,PGEO,6060,1,24M,3,Advanced Topics in Geosciences,,TBA,10,2,8,0,0,0,Henrique Garcia Momm (P),01/17-05/04,TBA TBA,
+NR,17588,PGEO,6060,3,24M,3,Advanced Topics in Geosciences,MWF,08:00 am-08:55 am,2,1,1,0,0,0,Henrique Garcia Momm (P),01/17-05/04,DSB 208,
+C,17625,PGEO,6060,4,24M,3,Advanced Topics in Geosciences,W,06:50 am-07:45 am,1,1,0,0,0,0,Racha El Kadiri (P),01/17-05/04,DSB 208,
+NR,15863,PGEO,6070,1,24M,3,Quantitative Methods in Geosciences,MW,04:10 pm-05:35 pm,10,8,2,0,0,0,Henrique Garcia Momm (P),01/17-05/04,DSB 208,

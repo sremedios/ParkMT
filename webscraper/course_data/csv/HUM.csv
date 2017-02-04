@@ -1,0 +1,14 @@
+Select,,,,,,,,,,,,,,,,,,,
+HUM-Humanities,,,,,,,,,,,,,,,,,,,
+Select,CRN,Subj,Crse,Sec,Cmp,Cred,Title,Days,Time,Cap,Act,Rem,XL Cap,XL Act,XL Rem,Instructor,Date (MM/DD),Location,Attribute
+C,12079,HUM,1010,R50,65R,3,Introduction to Humanities I,,TBA,0,6,-6,0,0,0,RODP Faculty (P),01/17-05/03,TBA TBA,TN eCampus (formerly RODP) and Credit from 4-Year College
+C,12421,HUM,1020,R50,65R,3,Introduction to Humanities II,,TBA,0,1,-1,0,0,0,RODP Faculty (P),01/17-05/03,TBA TBA,TN eCampus (formerly RODP) and Credit from 4-Year College
+C,10622,HUM,2130,D01,24M,3,Medical Vocabulary,,TBA,30,33,-3,0,0,0,Tom Heine (P),01/17-05/04,TBA TBA,Distance Learning and Distance Education Fee-UG and Credit from 4-Year College
+C,10623,HUM,2130,D02,24M,3,Medical Vocabulary,,TBA,30,31,-1,0,0,0,Tom Heine (P),01/17-05/04,TBA TBA,Distance Learning and Distance Education Fee-UG and Credit from 4-Year College
+NR,16714,HUM,2130,D03,24M,3,Medical Vocabulary,,TBA,30,29,1,0,0,0,Sonja M Hedgepeth (P),01/17-05/04,TBA TBA,Distance Learning and Distance Education Fee-UG and Credit from 4-Year College
+C,13036,HUM,2610,1,24M,3,Foreign Literature in Translation,TR,01:00 pm-02:25 pm,20,20,0,0,0,0,Kari Sue Neely (P),01/17-05/04,BAS S307,GE-Current: Hum/Fine Arts-Lit and Gen Ed - Hum/Fine Art Block and Credit from 4-Year College
+NR,13779,HUM,2610,2,24M,3,Foreign Literature in Translation,TR,08:00 am-09:25 am,20,19,1,0,0,0,Leah Tolbert Lyons (P),01/17-05/04,BDA 307,GE-Current: Hum/Fine Arts-Lit and Gen Ed - Hum/Fine Art Block and Credit from 4-Year College
+NR,15177,HUM,3000,1,24M,3,Topics in Foreign Language Linguistics,MWF,12:40 pm-01:35 pm,20,8,12,0,0,0,Richard E Morris (P),01/17-05/04,BDA 307,Credit from 4-Year College and Upper-Division Work
+NR,14324,HUM,3065,1,24M,3,Topics in Italian Culture,TR,02:40 pm-04:05 pm,25,11,14,0,0,0,Nuria Maria Novella (P),01/17-05/04,BDA 305,Credit from 4-Year College and Upper-Division Work
+NR,15179,HUM,3110,1,24M,3,Cityscapes: Paris in Love and War,W,02:40 pm-05:40 pm,16,6,10,0,0,0,Nancy Sloan Goldberg (P),01/17-05/04,BDA 303B,Credit from 4-Year College and Upper-Division Work
+NR,16531,HUM,4000,1,24M,3,Women of the Middle East: Representations and Perceptions,T,02:40 pm-05:40 pm,20,4,16,0,0,0,Kari Sue Neely (P),01/17-05/04,BDA 307,Jewish and Holocaust Studies and Middle East Studies and Credit from 4-Year College and Upper-Division Work
