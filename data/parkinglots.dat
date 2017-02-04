@@ -1,34 +1,29 @@
-scale=4ft/unit
-name 			capacity		x	y
-Rose 			57			3728	392
-Fair View		197			3616	1032
-Bell 			127			3624	3060
-IngramN		30			3820 3668
-IngramS		98			3572 3936
-ParkingServ		136			4652 4496
-MainSt			75			4996 4564
-PublicSafety		32			4692 5184
-CollegeHeights		46			5808 4688
-SportsPlex		112			8560 5580
-CityView		131			8752 4696
-Greek row		95			8812 3692
-Rutherford		934			9916 3952
-Softball		519			8540 3236
-Ezell			171			7104 3660
-MtsuBlvdG		490			7840 3232
-Rec			95			7468 3536
-Abernathy		31			6872 4172
-MTSU 			712			8960 2572
-Highland		210			420 2712
-MEC			57			932 2316
-BellStG		490			480 2400
-Jackson		49			544 2184
-Livestock		732			6896 1184
-Greenhouse		509			7204 2280
-ChampionWayG		490			6236 1728
-Greenland		681			5272 896
-MiddleTN		194			4108	576
-
-
-
-
+name		x		y		capacity		
+Rose		3728		392		57		
+FairView		3616		1032		197		
+Bell		3624		3060		127		
+IngramN		3820		3668		30		
+IngramS		3572		3936		98		
+ParkingServ		4652		4496		136		
+MainSt		4996		4564		75		
+PublicSafety		4692		5184		32		
+CollegeHeights		5808		4688		46		
+SportsPlex		8560		5580		112		
+CityView		8752		4696		131		
+GreekRow		8812		3692		95		
+Rutherford		9916		3952		934		
+Softball		8540		3236		519		
+Ezell		7104		3660		171		
+MtsuBlvdG		7840		3232		490		
+Rec		7468		3536		95		
+Abernathy		6872		4172		31		
+MTSU		8960		2572		712		
+Highland		420		2712		210		
+MEC		932		2316		57		
+BellStG		480		2400		490		
+Jackson		544		2184		49		
+Livestock		6896		1184		732		
+Greenhouse		7204		2280		509		
+ChampionWayG		6236		1728		490		
+Greenland		5272		896		681		
+MiddleTN		4108		576		194		
