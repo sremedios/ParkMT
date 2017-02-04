@@ -37,20 +37,22 @@ enum BldNames{PCS, FAIR, EHS, ING, ALOF, ALUM, UP, HARR, BH, JUB, PH, KOM, VET,
               LIB, BAS, SAG, HMA, TCM, HOB, TLC, MB, BRAGG, COE, VA, HC, GH,
               HONR};
 
-void ReadFiles(ParkingLot lotArray[LOT], float distanceFromLot[LOT][BLD]);
-void Gamma(string lotId, float distanceFromLot, float time, char day);
-void beta(float time, char day, std::string lotArray);
-void Population(float time, char day);
+void   ReadFiles(ParkingLot lotArray[LOT], float distanceFromLot[LOT][BLD]);
+float  Gamma(string lotId, float distanceFromLot, float time, char day);
+void   beta(float time, char day, std::string lotArray);
+float  Population(float time, char day);
 
 int main()
 {
     ParkingLot lotArray[LOT];
-    float      distanceFromLot[LOT][BLD];
+    float      distanceFromLot[LOT][BLD],
+               time;
+    char       day;
     ReadFiles(lotArray, distanceFromLot);
 
    // Gamma(lotArray[].lotId, distanceFromLot[][], time, day);
    // beta(time, day, );
-   // Population();
+    Population(time, day);
     return 0;
 }
 
@@ -89,9 +91,24 @@ void ReadFiles(ParkingLot lotArray[LOT], float distanceFromLot[LOT][BLD])
     return;
 }
 
-void Gamma(string lotId, float distanceFromLot, float time, char day)
+float Gamma(string lotId, float distanceFromLot, float time, char day)
 {
     //beta(time, day, lotarray)
 
+   return 0.01;
+}
+
+void beta(float time, char day, std::string lotArray)
+{
+    Population(time, day);
     return;
+}
+
+float Population(float time, char day)
+{
+    float population;
+    if(time == 6 || time == 18)
+        return 0.0;
+    population = ((time - 12)*(time - 12))/((time - 6)*(time - 18));
+    return population;
 }
