@@ -28,7 +28,7 @@ for x in building_list:
 	Buildings.update({ x : hour_density})
 	myIn.close()
 
-jsonStr = json.dump(Buildings)
+jsonStr = json.dumps(Buildings)
 
 myIn = open('jsonStr.json', 'w')
 myIn.write(jsonStr)
