@@ -1,6 +1,12 @@
 <html>
+	<script>
+		function frame(){
+		var data = window.frames['genFrame'].document.body.innerHTML 
+			console.log(data);
+		}
+	</script>
 	<body>
-		<iframe width="300" height="500" />
+		<iframe id="genFrame" onchange="frame()" src="https://lum4prod.mtsu.edu/cp/home/displaylogin" width="1000" height="1000" />
 		
 	</body>
 </html>
