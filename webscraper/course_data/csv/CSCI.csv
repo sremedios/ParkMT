@@ -1,0 +1,65 @@
+Sections Found,,,,,,,,,,,,,,,,,,,
+CSCI-Computer Sci (MTSU&TN eC),,,,,,,,,,,,,,,,,,,
+Select,CRN,Subj,Crse,Sec,Cmp,Cred,Title,Days,Time,Cap,Act,Rem,XL Cap,XL Act,XL Rem,Instructor,Date (MM/DD),Location,Attribute
+C,14311,CSCI,1010,1,24M,1,Computer Science Colloquium,M,10:20 am-11:15 am,32,33,-1,0,0,0,Chrisila C Pettey (P),01/17-05/04,KOM 452,Credit from 4-Year College
+C,16500,CSCI,1010,2,24M,1,Computer Science Colloquium,W,10:20 am-11:15 am,30,31,-1,0,0,0,Chrisila C Pettey (P),01/17-05/04,KOM 452,Credit from 4-Year College
+C,16501,CSCI,1010,3,24M,1,Computer Science Colloquium,F,10:20 am-11:15 am,33,34,-1,0,0,0,Chrisila C Pettey (P),01/17-05/04,KOM 452,Credit from 4-Year College
+C,10012,CSCI,1150,1,24M,3,Computer Orientation,MWF,09:10 am-10:05 am,28,29,-1,0,0,0,Cody R Crawford (P),01/17-05/04,KOM 321,Credit from 4-Year College
+NR,10013,CSCI,1150,2,24M,3,Computer Orientation,MW,12:40 pm-02:05 pm,87,86,1,0,0,0,Yi Gu (P),01/17-05/04,KOM 452,Credit from 4-Year College
+C,10014,CSCI,1150,3,24M,3,Computer Orientation,TR,08:00 am-09:25 am,78,78,0,0,0,0,Medha S Sarkar (P),01/17-05/04,BAS S328,Credit from 4-Year College
+NR,10015,CSCI,1150,4,24M,3,Computer Orientation,TR,02:40 pm-04:05 pm,87,85,2,0,0,0,Sung Kun Yoo (P),01/17-05/04,BAS S328,Credit from 4-Year College
+C,15187,CSCI,1150,5,24M,3,Computer Orientation,TR,04:20 pm-05:45 pm,16,17,-1,0,0,0,Shoira Shamsieva (P),01/17-05/04,KOM 452,Credit from 4-Year College
+NR,12689,CSCI,1160,1,24M,4,Introduction to Computing: A Multimedia Approach,MW,02:20 pm-03:45 pm,28,9,19,0,0,0,Salvador E Barbosa (P),01/17-05/04,KOM 307,Credit from 4-Year College
+,,,,,,,,MW,03:55 pm-04:55 pm,,,,,,,Salvador E Barbosa (P),01/17-05/04,TBA TBA,Credit from 4-Year College
+C,10016,CSCI,1170,1,24M,4,Computer Science I,MWF,09:10 am-10:05 am,58,60,-2,0,0,0,Salvador E Barbosa (P),01/17-05/04,KOM 452,Tutoring Courses and Credit from 4-Year College
+,,,,,,,,MW,10:15 am-11:15 am,,,,,,,Salvador E Barbosa (P),01/17-05/04,TBA TBA,Tutoring Courses and Credit from 4-Year College
+C,10017,CSCI,1170,2,24M,4,Computer Science I,MW,12:40 pm-02:05 pm,28,29,-1,0,0,0,Roland H Untch (P),01/17-05/04,KOM 307,Tutoring Courses and Credit from 4-Year College
+,,,,,,,,MW,02:15 pm-03:15 pm,,,,,,,Roland H Untch (P),01/17-05/04,TBA TBA,Tutoring Courses and Credit from 4-Year College
+C,10018,CSCI,1170,3,24M,4,Computer Science I,MW,04:20 pm-05:45 pm,28,30,-2,0,0,0,Neal W McClain (P),01/17-05/04,KOM 321,Tutoring Courses and Credit from 4-Year College
+,,,,,,,,MW,05:55 pm-06:55 pm,,,,,,,Neal W McClain (P),01/17-05/04,TBA TBA,Tutoring Courses and Credit from 4-Year College
+C,15190,CSCI,1170,4,24M,4,Computer Science I,TR,08:00 am-09:25 am,25,26,-1,0,0,0,Suk Jai Seo (P),01/17-05/04,KOM 323,Tutoring Courses and Credit from 4-Year College
+,,,,,,,,TR,09:35 am-10:35 am,,,,,,,Suk Jai Seo (P),01/17-05/04,TBA TBA,Tutoring Courses and Credit from 4-Year College
+NR,15191,CSCI,1170,5,24M,4,Computer Science I,TR,09:40 am-11:05 am,43,42,1,0,0,0,Jungsoon P Yoo (P),01/17-05/04,KOM 452,Tutoring Courses and Credit from 4-Year College
+,,,,,,,,TR,11:15 am-12:15 pm,,,,,,,Jungsoon P Yoo (P),01/17-05/04,TBA TBA,Tutoring Courses and Credit from 4-Year College
+C,10019,CSCI,2170,1,24M,4,Computer Science II,MWF,10:20 am-11:15 am,19,20,-1,0,0,0,Hyrum D Carroll (P),01/17-05/04,KOM 307,Tutoring Courses and Credit from 4-Year College
+,,,,,,,,MW,11:25 am-12:25 pm,,,,,,,Hyrum D Carroll (P),01/17-05/04,TBA TBA,Tutoring Courses and Credit from 4-Year College
+C,10020,CSCI,2170,2,24M,4,Computer Science II,MW,12:40 pm-02:05 pm,23,24,-1,0,0,0,Hyrum D Carroll (P),01/17-05/04,KOM 323,Tutoring Courses and Credit from 4-Year College
+,,,,,,,,MW,02:15 pm-03:15 pm,,,,,,,Hyrum D Carroll (P),01/17-05/04,TBA TBA,Tutoring Courses and Credit from 4-Year College
+C,10021,CSCI,2170,3,24M,4,Computer Science II,TR,11:20 am-12:45 pm,28,30,-2,0,0,0,Roland H Untch (P),01/17-05/04,KOM 307,Tutoring Courses and Credit from 4-Year College
+,,,,,,,,TR,12:55 pm-01:55 pm,,,,,,,Roland H Untch (P),01/17-05/04,TBA TBA,Tutoring Courses and Credit from 4-Year College
+C,15193,CSCI,2170,5,24M,4,Computer Science II,TR,04:20 pm-05:45 pm,22,22,0,0,0,0,Roland H Untch (P),01/17-05/04,KOM 321,Tutoring Courses and Credit from 4-Year College
+,,,,,,,,TR,05:55 pm-06:55 pm,,,,,,,Roland H Untch (P),01/17-05/04,TBA TBA,Tutoring Courses and Credit from 4-Year College
+C,13236,CSCI,3037,1,24M,3,Computer Languages: Visual Programming,TR,04:20 pm-05:45 pm,24,26,-2,0,0,0,Sung Kun Yoo (P),01/17-05/04,KOM 320,Credit from 4-Year College and Upper-Division Work
+C,10022,CSCI,3080,1,24M,3,Discrete Structures,MW,04:20 pm-05:45 pm,60,70,-10,70,72,-2,Chrisila C Pettey (P),01/17-05/04,KOM 452,Credit from 4-Year College and Upper-Division Work
+C,10023,CSCI,3110,1,24M,3,Algorithms and Data Structures,MW,12:40 pm-02:05 pm,56,57,-1,0,0,0,Zhijiang Dong (P),01/17-05/04,KOM 320,Tutoring Courses and Credit from 4-Year College and Upper-Division Work
+C,10024,CSCI,3130,1,24M,4,Assembly and Computer Organization,TR,11:20 am-12:45 pm,62,64,-2,0,0,0,Joshua Lee Phillips (P),01/17-05/04,KOM 452,Credit from 4-Year College and Upper-Division Work
+,,,,,,,,F,10:20 am-12:20 pm,,,,,,,Joshua Lee Phillips (P),01/17-05/04,TBA TBA,Credit from 4-Year College and Upper-Division Work
+C,10025,CSCI,3160,1,24M,3,Introduction to Assembly Language,TR,04:20 pm-05:45 pm,13,15,-2,0,0,0,Suk Jai Seo (P),01/17-05/04,KOM 323,Credit from 4-Year College and Upper-Division Work
+C,13237,CSCI,3180,1,24M,3,Introduction to Numerical Analysis,TR,11:20 am-12:45 pm,20,21,-1,30,30,0,Suk Jai Seo (P),01/17-05/04,KOM 323,Credit from 4-Year College and Upper-Division Work
+C,10026,CSCI,3210,1,24M,3,Theory of Programming Languages,MW,04:20 pm-05:45 pm,56,58,-2,0,0,0,Zhijiang Dong (P),01/17-05/04,KOM 320,Credit from 4-Year College and Upper-Division Work
+C,11911,CSCI,3222,R50,23R,3,Database Management Systems,,TBA,0,11,-11,0,0,0,RODP Faculty (P),01/17-05/03,TBA TBA,TN eCampus (formerly RODP) and Credit from 4-Year College and Upper-Division Work
+C,14316,CSCI,3240,1,24M,4,Introduction to Computer Systems,MW,02:20 pm-03:45 pm,39,42,-3,0,0,0,Ralph Milton Butler (P),01/17-05/04,KOM 320,Credit from 4-Year College and Upper-Division Work
+,,,,,,,,MW,03:55 pm-04:55 pm,,,,,,,Ralph Milton Butler (P),01/17-05/04,TBA TBA,Credit from 4-Year College and Upper-Division Work
+C,15646,CSCI,4017,R50,23R,3,Introduction to Information Assurance,,TBA,0,3,-3,0,0,0,RODP Faculty (P),01/17-05/03,TBA TBA,TN eCampus (formerly RODP) and Credit from 4-Year College and Upper-Division Work
+C,16868,CSCI,4330,1,24M,3,Parallel Processing Concepts,MW,06:00 pm-07:25 pm,24,26,-2,0,0,0,Chrisila C Pettey (P),01/17-05/04,KOM 321,Credit from 4-Year College and Upper-Division Work
+C,16503,CSCI,4360,1,24M,3,Intelligent Robot System,TR,11:20 am-12:45 pm,21,23,-2,30,27,3,Cen Li (P),01/17-05/04,KOM 320,Credit from 4-Year College and Upper-Division Work
+C,11655,CSCI,4410,1,24M,3,Web Technologies,TR,02:40 pm-04:05 pm,25,26,-1,30,29,1,Jungsoon P Yoo (P),01/17-05/04,KOM 321,Credit from 4-Year College and Upper-Division Work
+C,13414,CSCI,4700,1,24M,3,Software Engineering,TR,01:00 pm-02:25 pm,37,39,-2,50,42,8,Medha S Sarkar (P),01/17-05/04,KOM 452,Credit from 4-Year College and Upper-Division Work
+NR,13297,CSCI,4910,1,24M,3,(EXL) Computer Science Internship,,TBA,3,2,1,0,0,0,Salvador E Barbosa (P),01/17-05/04,TBA TBA,Experiential Learning and Credit from 4-Year College and Upper-Division Work
+C,16505,CSCI,5360,1,24M,3,Intelligent Robot Systems,TR,11:20 am-12:45 pm,3,4,-1,30,27,3,Cen Li (P),01/17-05/04,KOM 320,
+C,11656,CSCI,5410,1,24M,3,Web Technologies,TR,02:40 pm-04:05 pm,2,3,-1,30,29,1,Jungsoon P Yoo (P),01/17-05/04,KOM 321,
+NR,13415,CSCI,5700,1,24M,3,Software Engineering,TR,01:00 pm-02:25 pm,6,3,3,50,42,8,Medha S Sarkar (P),01/17-05/04,KOM 452,
+C,15647,CSCI,6017,R50,23R,3,Introduction to Information Assurance,,TBA,0,0,0,0,0,0,RODP Faculty (P),01/17-05/03,TBA TBA,TN eCampus (formerly RODP)
+NR,16134,CSCI,6050,1,24M,4,Computer Systems Fundamentals,,TBA,8,7,1,0,0,0,Ralph Milton Butler (P),01/17-05/04,TBA TBA,
+C,15197,CSCI,6300,1,24M,3,Networks,MW,04:20 pm-05:45 pm,3,4,-1,0,0,0,Yi Gu (P),01/17-05/04,KOM 307,
+C,15198,CSCI,6350,1,24M,3,Selected Topics in Artificial Intelligence:Data Mining,TR,01:00 pm-02:25 pm,4,6,-2,25,10,15,Cen Li (P),01/17-05/04,KOM 307,
+,13418,CSCI,6430,1,24M,3,Selected Topics in Parallel Processing:Design of Parallel Software,TR,04:20 pm-05:45 pm,17,19,-2,0,0,0,Ralph Milton Butler (P),01/17-05/04,KOM 307,
+,16507,CSCI,6450,1,24M,3,Operating System Design,TR,06:00 pm-07:25 pm,19,21,-2,0,0,0,Ralph Milton Butler (P),01/17-05/04,KOM 307,
+C,16508,CSCI,6560,1,24M,3,Selected Topics in Database:Database Security,MW,06:00 pm-07:25 pm,9,10,-1,0,0,0,Zhijiang Dong (P),01/17-05/04,KOM 307,
+C,12691,CSCI,6620,1,24M,3,Research Methods in Computer Science,TR,02:40 pm-04:05 pm,9,10,-1,0,0,0,Joshua Lee Phillips (P),01/17-05/04,KOM 307,
+C,17394,CSCI,6640,1,24M,3,Thesis Research,,TBA,1,1,0,0,0,0,Joshua Lee Phillips (P),01/17-05/04,TBA TBA,
+,17437,CSCI,6640,2,24M,1,Thesis Research,,TBA,1,1,0,0,0,0,Zhijiang Dong (P),01/17-05/04,TBA TBA,
+C,17526,CSCI,6640,3,24M,2,Thesis Research,,TBA,0,1,-1,0,0,0,Yi Gu (P),01/17-05/04,TBA TBA,
+C,17604,CSCI,6640,4,24M,2,Thesis Research,,TBA,1,1,0,0,0,0,Cen Li (P),01/17-05/04,TBA TBA,
+C,17626,CSCI,6640,5,24M,1,Thesis Research,,TBA,1,1,0,0,0,0,Joshua Lee Phillips (P),01/17-05/04,TBA TBA,
+C,16509,CSCI,7350,1,24M,3,Data Mining,TR,01:00 pm-02:25 pm,2,4,-2,25,10,15,Cen Li (P),01/17-05/04,KOM 307,
