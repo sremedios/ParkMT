@@ -3,8 +3,8 @@ name 			capacity		x	y
 Rose 			57			932	98
 Fair View		197			904	258
 Bell 			127			906	765
-IngramN			30			955	917
-IngramS			98			893	984
+IngramN		30			955	917
+IngramS		98			893	984
 ParkingServ		136			1163	1124
 MainSt			75			1249	1141
 PublicSafety		32			1173	1296
@@ -21,8 +21,8 @@ Abernathy		31			1718	1043
 MTSU 			712			2240	643
 Highland		210			105	678
 MEC			57			233	579
-BellStG			490			120	600
-Jackson			49			136	546
+BellStG		490			120	600
+Jackson		49			136	546
 Livestock		732			1724	296
 Greenhouse		509			1801	570
 ChampionWayG		490			1559	432
