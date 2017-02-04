@@ -6,11 +6,12 @@
 #define NUMBER_OF_BUILDINGS 30
 #define NUMBER_OF_LOTS 30
 #define NUMBER_OF_DAYS 5
-#define NUMBER_OF_HOURS 24
+#define NUMBER_OF_HOURS 48 
 #define DAYS_COL 8
 #define TIME_COL 9
 #define ACT_COL 11
 #define XLACT_COL 14
+#define LOCATION_COL 18
 
 using std::string;
 using std::map;
@@ -21,8 +22,7 @@ using std::endl;
 
 struct Building{
     string name;
-    int numStudents = 0;
-    int timeBlocks[NUMBER_OF_HOURS][NUMBER_OF_DAYS];
+    int numStudents[NUMBER_OF_HOURS][NUMBER_OF_DAYS]; /* rows are in 30 min increments */
 };
 
 struct Lot{
@@ -37,12 +37,15 @@ void readFile(string filename);
 int main(){
     Building buildingList[NUMBER_OF_BUILDINGS];
     Lot lotList[NUMBER_OF_LOTS];
-    string s = "./webscraper/course_data/AAS/testclass.csv"
+    string s = "./webscraper/course_data/AAS/testclass.csv";
+
+    readFile(s);
+
 
     return 0;
 }
 
-void readFile(string filename, Building buildinglist)
+void readFile(string filename)
 /* reads CSV file and holds data in structs */
 {
     
@@ -58,7 +61,7 @@ void readFile(string filename, Building buildinglist)
     int i = 0; 
     while(file.good()){
         getline(file,value,',');
-        if (i == DAYS_COL || i == TIME_COL || i == ACT_COL || i == XLACT_COL)
+        if (i == DAYS_COL || i == TIME_COL || i == ACT_COL || i == XLACT_COL || i == LOCATION_COL)
             cout << string(value) << endl;
         ++i;
         if (i > 18)
