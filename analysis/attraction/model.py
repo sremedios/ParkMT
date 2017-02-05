@@ -3,22 +3,25 @@
 # MTSU campus based on its location, the population of nearby buildings,
 # and the amount of spots in the parking spot.
 
-import operator
+from math import exp
 
 #the no no variables
 parking_lots = []
 buildings = []
+populations={}
  
 def main():
     # Open lot and building position data files and convert to arrays
     global parking_lots
     global buildings
+    global populations
 
     parking_lots=get_array("../../data/parkinglots.dat")
     buildings =  get_array("../../data/buildings.dat")
+    populations =get_pop_dict("RyansDesires.txt")
 
-#    day, time, destination = get_user_input()
-    day, time, destination = 1, 15, 10
+    day, time, destination = get_user_input()
+#    day, time, destination = 1, 15, 10
 
     # get attractiveness of each lot based on input
     attractions = {}
@@ -34,7 +37,7 @@ def main():
     weekday = "MTWRF"
     print("On",weekday[day],"at",time,"going to",buildings[destination][0],"these lots have these attractions:")
     for i in range(len(sorted_attractions)):
-        print(format(i,'2'),format(sorted_attractions[i][0],'15'),sorted_attractions[i][1])
+        print(format(i,'2'),format(sorted_attractions[i][0],'15'),format(sorted_attractions[i][1],'>8.2f'))
 
 # This function takes the input files and turn them in to arrays.
 # Each element corresponds to one building or parking lot.
@@ -53,6 +56,28 @@ def get_array(filename):
                 pass
     in_file.close()
     return data_array
+
+# Makes a dictionary from Ryans magical 1 dimensional text file.
+# Access values like so:
+# dict[building_name][day][hour]
+def get_pop_dict(filename):
+    dict1 = {}
+    in_file = open(filename,"r")
+
+    building = in_file.readline().strip()
+    while building != '':
+        days = [[],[],[],[],[]]
+        for i in range(24):
+            for j in range(5):
+                popval = in_file.readline()
+                days[j].append(int(popval))
+        dict1[building] = days
+        days = []
+        building = in_file.readline().strip()
+
+    in_file.close()
+    return dict1
+
 
 # This function will get the distance between two spots of the map.
 # distance = sqrt([x1-x2]^2+[y1-y2]^2)
@@ -107,16 +132,19 @@ def get_user_input():
 # destination = buildings[i]
 def attractiveness(lot,destination,time,day):
     capacity = lot[2]
-    attraction = distance_preference(lot,destination) * available_parking(lot, time, day) / capacity
+    attraction = distance_preference(lot,destination) * available_parking(lot, time, day) #/ capacity
     return attraction
 
 # This function is $100% cheese.
 # It gives a value that decreases as distance increases.
 # domain is 0 < y < 1
 def distance_preference(lot, destination):
-    A = 4.0  # This is a parameter we can play with
+    #A = 4.0  # This is a parameter we can play with
     distance = get_distance(lot, destination)
-    preference = 1/(A*distance/5280.0 + 1.0)
+    #preference = 1/(A*distance/5280.0 + 1.0)
+    B = .75
+    walkfar = 5280/2
+    preference = 1/(1 + exp(B/528*(distance-walkfar))+1)
     return preference
 
 # This function returns a calculated value for amount of spots available.
@@ -145,10 +173,24 @@ def parked(lot, building, time, day):
 
 # This function will return the theoretical population for a given time.
 # This function is probably going to cause the most error in our results.
+# Access population of building on a day at a time as such:
+# populations[building_name][day][hour]
 def population(building, time, day):
-    return 500
+    pop_total = attempt_pop_read(building, time, day)
+    for i in range(1,4):
+        pop_total += attempt_pop_read(building, time+i, day)/(2**i)
+        pop_total += attempt_pop_read(building, time-i, day)/(2**i)
+    a_rate = 0.9  # attendence
+    c_rate = 0.8  # commuters
 
+    return pop_total * a_rate * c_rate
 
+def attempt_pop_read(building, time, day):
+    try:   # See if we have data for building
+        pop = populations[building[0]][day][time]
+    except:
+        return 0
+    return pop
 
 
 
