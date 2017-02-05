@@ -27,26 +27,26 @@ for f in filenames:
             if tmpTime.split()[0] == "TBA":
                 continue
             if tmpTime[7:9] == "pm":
-                time.append(int(tmpTime[0:2]) + 12)
-            else:
                 time.append(int(tmpTime[0:2]))
-            if tmpTime[-2]+tmpTime[-1] == "pm":
-                time.append(int(tmpTime[-8:-6]) + 12)
             else:
+                time.append(int(tmpTime[0:2]) + 12)
+            if tmpTime[-2]+tmpTime[-1] == "pm":
                 time.append(int(tmpTime[-8:-6]))
+            else:
+                time.append(int(tmpTime[-8:-6]) + 12)
             # time[0] is start time, time[1] is end time
 
             days = df.iloc[row,8]
-            for day in days:
-                if day == 'M':
+            for day in range(len(days)):
+                if days[day] == 'M':
                     dayIndex = 0
-                if day == 'T':
+                if days[day] == 'T':
                     dayIndex = 1
-                if day == 'W':
+                if days[day] == 'W':
                     dayIndex = 2
-                if day == 'R':
+                if days[day] == 'R':
                     dayIndex = 3
-                if day == 'F':
+                if days[day] == 'F':
                     dayIndex = 4
                 if not isnan(float(df.iloc[row,11])):
                     for hour in range(time[0]-1,time[1]):
@@ -58,11 +58,13 @@ for f in filenames:
 
 TotalStudentsPerDay = []
 total = 0
-for room in buildings:
-    for day in range(5):
+for day in range(5):
+    for room in buildings:
         for hour in range(24):
-            total += 3*buildings[room][hour][day]
-        TotalStudentsPerDay.append(total)
-        total = 0
+            total += buildings[room][hour][day]
+    TotalStudentsPerDay.append(total)
+    total = 0
+
 
 print(max(TotalStudentsPerDay))
+print(sum(TotalStudentsPerDay)/5)
