@@ -32,6 +32,8 @@
     <div ng-include="'header.html'"></div>
 		<script>
 			$(document).ready(function(){
+        $("#selectedDay").val(0);
+        $("#selectedMap").val("building");
         $("#parking").hide();
         angular.element('#mainBody').scope().GrabJson("building");
 				$( function() {
@@ -48,7 +50,7 @@
 			      slide: function( event, ui ) {
 							var currHour = ui.value%12;
 							var timeSec = "";
-							$("#sliderVal").val(ui.value);
+							$("#sliderVal").val(currHour);
               var selectedDay = $("#selectedDay").val();
 							angular.element('#mainBody').scope().RefreshDensityMap(ui.value,selectedDay,$("#selectedMap").val());
 
@@ -95,7 +97,7 @@
           <div id="timeSlider"  align="center">
             <div id="custom-handle" class="ui-slider-handle"></div>
           </div>
-          <input type="hidden" id="sliderVal" ng-model="sliderVal" ng-change="AlterColorMap(this.value)"/>
+          <input type="hidden" id="sliderVal" "/>
         </div>
         <div class="col-lg-6"></div>
       </div>

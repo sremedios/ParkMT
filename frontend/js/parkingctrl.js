@@ -8,7 +8,8 @@ parkMtApp.controller("parkingCtrl",function($scope, $rootScope,$http){
 
   $scope.parking = ["R","MT","FV","GL","CG","LS","GH","BS","IN","IS","PS","M","EZ","RC","MG","SB","ML","RF"];
 
-  $scope.colors = ["#0066cc","#ffda7c","#f74545"];
+  //$scope.colors = ["#0066cc","#ffda7c","green","black","#f74545"];
+  $scope.colors = ["#ffe6e6","#ffb3b3","#ff8080","#ff6666","#ff4d4d","#ff3333","#ff0000","#e60000","#cc0000","#b30000","#990000","#800000","#660000","#4d0000","#330000","#1a0000","#000000"];
   //$scope.parkingView = {"svg_2":"green"};
   $scope.sliderVal = 0;
   $scope.densityData = [];
@@ -16,23 +17,32 @@ parkMtApp.controller("parkingCtrl",function($scope, $rootScope,$http){
 
   $scope.DensityToColorMap = function(density){
     var maxResValue = $scope.colors.length;
-    var maxDensity = 25;
+    var maxDensity = 5000;
+    //alert(Math.round(((density)*maxResValue)/maxDensity));
     return Math.round(((density)*maxResValue)/maxDensity);
   }
 
 
   // User changed slider or day -- change the map
   $scope.RefreshDensityMap = function(hour,day,map){
+    console.log("Hour: "+ hour+" Day: "+ day + " Map: "+map);
+    console.log();
     var scaledDensity = 0;
     if(map == "building"){
+      //alert(map);
       for (bIndex in $scope.buildings){
+      //  if($scope.buildings[bIndex] == "KOM")
+        //  alert($scope.densityData[$scope.buildings[bIndex]][hour][day]);
+        console.log($scope.densityData[$scope.buildings[bIndex]] );
         if(typeof $scope.densityData[$scope.buildings[bIndex]] != "undefined"){
-          if(typeof $scope.densityData[$scope.buildings[bIndex]][hour] != "undefined"){
-            if(typeof $scope.densityData[$scope.buildings[bIndex]][hour][day] != "undefined"){
+          //if(typeof $scope.densityData[$scope.buildings[bIndex]][hour] != "undefined"){
+            //if(typeof $scope.densityData[$scope.buildings[bIndex]][hour][day] != "undefined"){
               scaledDensity = $scope.DensityToColorMap($scope.densityData[$scope.buildings[bIndex]][hour][day]);
+              console.log("Density: "+$scope.densityData[$scope.buildings[bIndex]][hour][day]);
               $("#"+$scope.buildings[bIndex]).attr("fill",$scope.colors[scaledDensity]);
-            }
-          }
+            //  alert("Changing: "+$scope.buildings[bIndex] + " , "+scaledDensity);
+          //  }
+        //  }
         }
       }
     }
