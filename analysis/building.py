@@ -6,9 +6,9 @@ buildings_dict = {}
 for x in range(53):
     building = myIn.readline().rstrip('\n')
     density_of_day = []
-    for y in range(5):
+    for y in range(24):
         density_of_hour = []
-        for z in range(24):
+        for z in range(5):
             density_of_hour.append(myIn.readline().rstrip('\n'))
 	density_of_day.append(density_of_hour)
     buildings_dict[building] = density_of_day
