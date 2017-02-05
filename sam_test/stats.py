@@ -71,18 +71,19 @@ for f in filenames:
 
 TotalStudentsInBuildings = []
 total = 0
+m = 0
 
-for day in range(5):
-    for hour in range(24):
+for hour in range(24):
+    for day in range(5):
         for room in buildings:
+            if buildings[room][hour][day] > m:
+                m = buildings[room][hour][day]
             total += buildings[room][hour][day]
         TotalStudentsInBuildings.append(total)
         total = 0
 
-    print("Day:",day)
-    print(TotalStudentsInBuildings.index(max(TotalStudentsInBuildings)))
-    print(sum(TotalStudentsInBuildings))
-
+    #print(TotalStudentsInBuildings.index(max(TotalStudentsInBuildings)))
+    #print(sum(TotalStudentsInBuildings))
     TotalStudentsInBuildings = []
     total = 0
-
+print(m)
