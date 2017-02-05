@@ -21,19 +21,19 @@ for f in filenames:
             # initialize matrix
             buildings[room] = [[0 for x in range(5)] for y in range(24)]
 
-            time = []
+            time = [0,0]
             
             tmpTime = df.iloc[row,9]
             if tmpTime.split()[0] == "TBA":
                 continue
             if tmpTime[7:9] == "pm":
-                time.append(int(tmpTime[0:2]) + 12)
+                time[0] = (int(tmpTime[0:2]) + 12)
             else:
-                time.append(int(tmpTime[0:2]))
+                time[0] = (int(tmpTime[0:2]))
             if tmpTime[-2]+tmpTime[-1] == "pm":
-                time.append(int(tmpTime[-8:-6]) + 12)
+                time[1] = (int(tmpTime[-8:-6]) + 12)
             else:
-                time.append(int(tmpTime[-8:-6]))
+                time[1] = (int(tmpTime[-8:-6]))
             # time[0] is start time, time[1] is end time
 
             days = df.iloc[row,8]
