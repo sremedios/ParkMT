@@ -1,10 +1,11 @@
 import json
 
-myIn = open("./PCS.txt",'r')
+myIn = open("./KOM.txt",'r')
 
 parkinglots_dict = {}
 for x in range(28):
     lot = myIn.readline().rstrip()
+    print lot
     density_of_day = []
     for y in range(24):
         density_of_hour = []
