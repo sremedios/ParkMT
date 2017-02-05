@@ -18,7 +18,7 @@ using std::string;
 const int   LOT  = 28;
 const int   BLD  = 40;
 const int   COL  = 2;
-const float MAX  = 200000.0;
+//const float MAX  = 200000.0;
 
 //Store parking lot info.
 struct ParkingLot{
@@ -50,20 +50,24 @@ void   ReadFiles(ParkingLot lotArray[LOT], float distanceFromLot[LOT][BLD],
 /*
 float  Gamma(string lotId, float distanceFromLot, float time, char day);
 void   beta(float time, char day, std::string lotArray);
-float  Population(float time, char day);
 */
+int    Population(int time, char day, Building bldArray[BLD]);
+
 int main()
 {
     ParkingLot lotArray[LOT];
     Building   bldArray[BLD];
-    float      distanceFromLot[LOT][BLD],
-               time;
+    float      distanceFromLot[LOT][BLD];
+    int        time;
     char       day;
     ReadFiles(lotArray, distanceFromLot, bldArray);
 
    // Gamma(lotArray[].lotId, distanceFromLot[][], time, day);
    // beta(time, day, );
-//    Population(time, day);
+    cin >> time;
+    cin >> day;
+
+    Population(time, day, bldArray);
     return 0;
 }
 
@@ -111,7 +115,7 @@ void ReadFiles(ParkingLot lotArray[LOT], float distanceFromLot[LOT][BLD],
         {
             for(int k = MON; k <= FRI; k++)
                 cout << bldArray[i].occupancy[j][k] << " ";
-             cout << endl;
+            cout << endl;
         }
     }
 
@@ -133,28 +137,34 @@ void beta(float time, char day, std::string lotArray)
     Population(time, day);
     return;
 }
+*/
 
-int Population(float time, char day, Building bldArray[BLD])
+int Population(int time, char day, Building bldArray[BLD])
 {
     int population = 0;
 
     if(day == 'm')
         for(int i = 0; i < BLD; i++)
-            population += bldArray[i].occupancy[MON];
+            for(int j = 0; j < time; j++)
+                population += bldArray[i].occupancy[j][MON];
     else if(day == 't')
         for(int i = 0; i < BLD; i++)
-            population += bldArray[i].occupancy[TUE];
+            for(int j = 0; j < time; j++)
+                population += bldArray[i].occupancy[j][TUE];
     else if(day == 'w')
         for(int i = 0; i < BLD; i++)
-            population += bldArray[i].occupancy[WED];
+            for(int j = 0; j < time; j++)
+                population += bldArray[i].occupancy[j][WED];
     else if(day == 'r')
         for(int i = 0; i < BLD; i++)
-            population += bldArray[i].occupancy[THUR];
+            for(int j = 0; j < time; j++)
+                population += bldArray[i].occupancy[j][THUR];
     else if(day == 'f')
         for(int i = 0; i < BLD; i++)
-            population += bldArray[i].occupancy[FRI];
+            for(int j = 0; j < time; j++)
+                population += bldArray[i].occupancy[j][FRI];
 
     return population;
 }
 
-*/
+

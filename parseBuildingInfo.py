@@ -8,18 +8,31 @@ path = "./webscraper/course_data/csv/"
 filenames = [f for f in listdir(path) if isfile(join(path,f))]
 
 buildings = {}
+bNames = ["PCS","FAIR","EHS","ING","ALOF","ALUM","UP","HARR","BH",
+        "JUB","PH","KOM","VET","AMG","SFA","WMB","JH","TODD","WPS",
+        "DSB","KUC","FH","BDA","CKNB","LRC","SCI","LIB","BAS","SAG",
+        "HMA","TCM","HOB","TLC","MB","BRAGG","COE","VA","HC","GC","HONR"]
+# initialize matrix
+for building in bNames: 
+    if building == "LIB":
+        n = 350
+        buildings[building] = [[n for x in range(5)] for y in range(24)]
+    buildings[building] = [[0 for x in range(5)] for y in range(24)]
+
 
 for f in filenames:
     df = pandas.read_csv(path+f)
     n_rows = df.shape[0]
     n_cols = df.shape[1]
     
+
     for row in range(2,n_rows):
         room = df.iloc[row,18].split()[0]
 
-        if room != "TBA" and df.iloc[row,16].split()[0] != "RODP":
-            # initialize matrix
+        if room not in buildings:
             buildings[room] = [[0 for x in range(5)] for y in range(24)]
+        
+        if room != "TBA" and df.iloc[row,16].split()[0] != "RODP":
 
             time = [0,0]
             
