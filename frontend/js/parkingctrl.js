@@ -6,18 +6,18 @@ parkMtApp.controller("parkingCtrl",function($scope, $rootScope,$http){
     "KUC","JH","FH","SFA","WMB","BDA","CKNB","TMC","TLC","HOB","HMA","SAG","BAS","COE","BRAGG","LIB",
     "HONR","SCI","LRC","WPS","DSB","BH","UP","HARR","VA","HC","GH"];
 
-  $scope.parking = ["R","MT","FV","GL","CG","LS","GH","BS","IN","IS","PS","M","EZ","RC","MG","SB","ML","RF"];
+  $scope.parking = ["Greenland","BellStG","ParkingServ","MainSt","Ezell","Rec","MtsuBlvdG","Softball","MTSU","Rutherford","Greenhouse","Livestock","ChampionWayG","FairView","Rose","IngramS","IngramN","RF"];
 
   //$scope.colors = ["#0066cc","#ffda7c","green","black","#f74545"];
   $scope.colors = ["#ffe6e6","#ffb3b3","#ff8080","#ff6666","#ff4d4d","#ff3333","#ff0000","#e60000","#cc0000","#b30000","#990000","#800000","#660000","#4d0000","#330000","#1a0000","#000000"];
+  $scope.parkingColors = ["#EBEBEB","#B4EEAD","#C9EEC4","#A0ED97","#9DED93","#83E777","#77EC69","#59EB47","#3BEB26","#19E800"];
   //$scope.parkingView = {"svg_2":"green"};
   $scope.sliderVal = 0;
   $scope.densityData = [];
 
 
-  $scope.DensityToColorMap = function(density){
+  $scope.DensityToColorMap = function(density,maxDensity){
     var maxResValue = $scope.colors.length;
-    var maxDensity = 5000;
     //alert(Math.round(((density)*maxResValue)/maxDensity));
     return Math.round(((density)*maxResValue)/maxDensity);
   }
@@ -37,7 +37,7 @@ parkMtApp.controller("parkingCtrl",function($scope, $rootScope,$http){
         if(typeof $scope.densityData[$scope.buildings[bIndex]] != "undefined"){
           //if(typeof $scope.densityData[$scope.buildings[bIndex]][hour] != "undefined"){
             //if(typeof $scope.densityData[$scope.buildings[bIndex]][hour][day] != "undefined"){
-              scaledDensity = $scope.DensityToColorMap($scope.densityData[$scope.buildings[bIndex]][hour][day]);
+              scaledDensity = $scope.DensityToColorMap($scope.densityData[$scope.buildings[bIndex]][hour][day],5000);
               console.log("Density: "+$scope.densityData[$scope.buildings[bIndex]][hour][day]);
               $("#"+$scope.buildings[bIndex]).attr("fill",$scope.colors[scaledDensity]);
             //  alert("Changing: "+$scope.buildings[bIndex] + " , "+scaledDensity);
@@ -47,12 +47,16 @@ parkMtApp.controller("parkingCtrl",function($scope, $rootScope,$http){
       }
     }
     else if(map == "parking"){
+
+      //$scope.GrabJson("parking",building);
       for (pIndex in $scope.parking){
-        if(typeof $scope.densityData[$scope.buildings[pIndex]] != "undefined"){
-          if(typeof $scope.densityData[$scope.buildings[pIndex]][hour] != "undefined"){
-            if(typeof $scope.densityData[$scope.buildings[pIndex]][hour][day] != "undefined"){
-              scaledDensity = $scope.DensityToColorMap($scope.densityData[$scope.buildings[pIndex]][hour][day]);
-              $("#"+$scope.buildings[pIndex]).attr("fill",$scope.colors[scaledDensity]);
+        console.log($scope.densityData[$scope.parking[pIndex]] );
+        if(typeof $scope.densityData[$scope.parking[pIndex]] != "undefined"){
+          if(typeof $scope.densityData[$scope.parking[pIndex]][hour] != "undefined"){
+            if(typeof $scope.densityData[$scope.parking[pIndex]][hour][day] != "undefined"){
+              scaledDensity = $scope.DensityToColorMap($scope.densityData[$scope.parking[pIndex]][hour][day],0.7);
+              console.log("Density: "+$scope.densityData[$scope.parking[pIndex]][hour][day]);
+              $("#"+$scope.parking[pIndex]).attr("fill",$scope.parkingColors[scaledDensity]);
             }
           }
         }
@@ -90,19 +94,41 @@ parkMtApp.controller("parkingCtrl",function($scope, $rootScope,$http){
   }
 
   // Get the JSON -- Call from Document.ready in main html page
-  $scope.GrabJson = function(map){
-    $http({
-      method: "GET",
-      url: map+"\\jsonStr.json"
-      }).then(function success(response){
-        //console.log(response.data);
-        //var myArray = JSON.parse(response.data);
-        $scope.densityData = response.data;
-        //alert($scope.densityData["KOM"]);
-        //console.log($scope.densityData["KOM"][3][20]);
-        $scope.RefreshDensityMap(0,0,map);
-      },function error(response){
-        alert(response.statusText);
-    });
+  $scope.GrabJson = function(map,building){
+    alert("test");
+    if(map == "building"){
+
+      $http({
+        method: "GET",
+        url: map+"\\jsonStr.json"
+        }).then(function success(response){
+          //console.log(response.data);
+          //var myArray = JSON.parse(response.data);
+          $scope.densityData = response.data;
+          //alert($scope.densityData["KOM"]);
+          //console.log($scope.densityData["KOM"][3][20]);
+          $scope.RefreshDensityMap(0,0,map);
+        },function error(response){
+          alert(response.statusText);
+      });
+    }
+    else{
+      alert("test");
+      //var building = prompt("Which Building?");
+      $http({
+        method: "GET",
+        url: map+"\\"+"KOM"+"\\parking.json"
+        }).then(function success(response){
+          //console.log(response.data);
+          //var myArray = JSON.parse(response.data);
+          $scope.densityData = response.data;
+          console.log($scope.densityData);
+          //alert($scope.densityData["KOM"]);
+          //console.log($scope.densityData["KOM"][3][20]);
+          $scope.RefreshDensityMap(0,0,map);
+        },function error(response){
+          alert(response.statusText);
+      });
+    }
   }
 });
