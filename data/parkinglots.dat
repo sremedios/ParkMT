@@ -8,7 +8,7 @@ ParkingServ        4652    4496     136
 MainSt             4996    4564      75
 PublicSafety       4692    5184      32
 CollegeHeights     5808    4688      46
-SportsPlex         8560    5580     112
+SportsPlex         8560    5580     100
 CityView           8752    4696     131
 GreekRow           8812    3692      95
 Rutherford         9916    3952     934
@@ -18,9 +18,8 @@ MtsuBlvdG          7840    3232     490
 Rec                7468    3536      95
 Abernathy          6872    4172      31
 MTSU               8960    2572     712
-Highland            420    2712     210
+Highland            420    2712     136
 MEC                 932    2316      57
-BellStG             480    2400     490
 Jackson             544    2184      49
 Livestock          6896    1184     732
 Greenhouse         7204    2280     509

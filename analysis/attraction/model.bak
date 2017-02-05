@@ -19,9 +19,9 @@ def main():
     parking_lots=get_array("../../data/parkinglots.dat")
     buildings =  get_array("../../data/buildings.dat")
     populations =get_pop_dict("RyansDesires.txt")
-
-    day, time, destination = get_user_input()
-#    day, time, destination = 1, 15, 10
+        
+#    day, time, destination = get_user_input()
+    day, time, destination = 1, 12, 19
 
     # get attractiveness of each lot based on input
     attractions = {}
@@ -31,13 +31,22 @@ def main():
 
     # sort by attraction
     sorted_attractions = sorted(attractions.items(), key=lambda kv: kv[1], reverse=True)
-#    print(sorted_attractions)
 
+    # normalize
+    min_attract = sorted_attractions[-1][-1]
+    max_attract = sorted_attractions[0][1] - min_attract
+    final_attract = []
+    i=0
+    for pair in sorted_attractions:
+        final_attract.append([sorted_attractions[i][0]])
+        final_attract[i].append((sorted_attractions[i][1] - min_attract)/max_attract)
+        i+=1
+    print(final_attract)
     # ouput building ranked by attraction
     weekday = "MTWRF"
     print("On",weekday[day],"at",time,"going to",buildings[destination][0],"these lots have these attractions:")
-    for i in range(len(sorted_attractions)):
-        print(format(i,'2'),format(sorted_attractions[i][0],'15'),format(sorted_attractions[i][1],'>8.2f'))
+    for i in range(len(final_attract)):
+        print(format(i+1,'2'),format(final_attract[i][0],'15'),format(final_attract[i][1],'>8.2f'))
 
 # This function takes the input files and turn them in to arrays.
 # Each element corresponds to one building or parking lot.
@@ -113,8 +122,10 @@ def get_user_input():
             print("Please input a whole number between 6 and 18!")
     
     # Ouput building list:
-    for i in range(len(buildings)):
-        print(format(i+1,'2'),". ",buildings[i][0],sep='')
+
+    for i in range(0,len(buildings)//2):
+        print(format(i+1,'2'),". ",format(buildings[i][0],'6'),sep='',end='')
+        print(format(len(buildings)//2+i+1,'2'),". ",buildings[len(buildings)//2+i][0],sep='')
     # Get building number. Note that the user list is not zero origin index!
     while (destination<1) or (destination>len(buildings)):
         destination = input("Please select the number corresponding to your destination: ")
@@ -139,14 +150,14 @@ def attractiveness(lot,destination,time,day):
 # It gives a value that decreases as distance increases.
 # domain is 0 < y < 1
 def distance_preference(lot, destination):
-    #A = 4.0  # This is a parameter we can play with
+    A = 10.0  # This is a parameter we can play with
     distance = get_distance(lot, destination)
-    #preference = 1/(A*distance/5280.0 + 1.0)
-    B = .75
-    walkfar = 5280/2
-    preference = 1/(1 + exp(B/528*(distance-walkfar))+1)
+    preference = 1/(A*distance/5280.0 + 1.0)
+    #B = .75
+    #walkfar = 5280/2
+    #preference = 1/(1 + exp(B/528*(distance-walkfar))+1)
     return preference
-
+    #return 1
 # This function returns a calculated value for amount of spots available.
 # Value returned can be negative. Might change and make it return 0 if negative
 def available_parking(lot, time, day):
@@ -168,7 +179,7 @@ def parked(lot, building, time, day):
     for lot in parking_lots:
         total_distance += get_distance(lot, building)
     
-    parkers = pop * distance / total_distance
+    parkers = pop * (1 - distance / total_distance)
     return parkers
 
 # This function will return the theoretical population for a given time.
@@ -177,9 +188,9 @@ def parked(lot, building, time, day):
 # populations[building_name][day][hour]
 def population(building, time, day):
     pop_total = attempt_pop_read(building, time, day)
-    for i in range(1,4):
-        pop_total += attempt_pop_read(building, time+i, day)/(2**i)
-        pop_total += attempt_pop_read(building, time-i, day)/(2**i)
+#    for i in range(1,4):
+#        pop_total += attempt_pop_read(building, time+i, day)/(3**i)
+#        pop_total += attempt_pop_read(building, time-i, day)/(3**i)
     a_rate = 0.9  # attendence
     c_rate = 0.8  # commuters
 
