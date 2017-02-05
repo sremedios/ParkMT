@@ -67,11 +67,26 @@ int main(){
     for (int i = 0; i < courseList.size(); i++){
         file.open(path + courseList[i]);
 
+        //cout << courseList[i] << endl;
+        if (courseList[i] == "GERM.csv")
+            continue;
+
         readFile(file, buildingList);
 
         file.close();
-        writeOutput(buildingList);
     }
+
+    for(int i = 0; i < NUMBER_OF_BUILDINGS; i++){
+        for(int j = 0; j < NUMBER_OF_HOURS; j++){
+          for(int k = 0; k < NUMBER_OF_DAYS; k++)
+            cout << buildingList[i].numStudents[j][k] << " ";
+          cout << endl;
+        }
+    }
+
+
+
+    writeOutput(buildingList);
 
     buildingList = NULL;
     delete[] buildingList;
@@ -85,6 +100,7 @@ void writeOutput(Building *buildingList){
     for(int j = 0; j < NUMBER_OF_HOURS; j++){
       for(int k = 0; k < NUMBER_OF_DAYS; k++)
         curBuildingOutput << buildingList[i].numStudents[j][k] << " ";
+      curBuildingOutput << endl;
     }
     curBuildingOutput.close();
   }
@@ -102,12 +118,17 @@ void readFile(ifstream& file, Building* buildingList)
         getline(file,value,',');
 
     getline(file,value); /* clear last one */
-    cout << value << endl;
+    //cout << value << endl;
     /* iterate through columns */
     for(int i = 0; file.good(); i++){
         getline(file,value,',');
+        if (i == 2 || i == 3)
+            //cout << value << endl;
+
         if(neededData(i)) {
-          cout << value << endl;
+          //cout << value << endl;
+          if (value == "Prevention")
+              continue;
           storeStudentCount(file, value, buildingList, i);
           i = 0;
           if (file.good()) getline(file, value, ',');
@@ -119,7 +140,7 @@ void readFile(ifstream& file, Building* buildingList)
 bool neededData(int selection)
 {
 //  cout << "started neededData\n";
-  //cout << "selection: " << selection << endl;
+//  cout << "selection: " << selection << endl;
   if(selection == DAYS_COL || selection == TIME_COL || selection == ACT_COL ||
     selection == XLACT_COL || selection == INSTRUCTOR_COL || selection == LOCATION_COL)
   {
