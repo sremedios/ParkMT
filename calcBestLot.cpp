@@ -1,6 +1,7 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <vector>
 #include <iostream>
 
 #define NUMBER_OF_BUILDINGS 40
@@ -20,6 +21,7 @@ using std::ifstream;
 using std::ofstream;
 using std::cout;
 using std::endl;
+using std::vector;
 
 struct Building{
     string name;
@@ -41,25 +43,48 @@ void writeOutput(Building *buildingList);
 
 int main(){
     Building *buildingList = new Building[NUMBER_OF_BUILDINGS];
-    for(int i = 0; i < NUMBER_OF_BUILDINGS; i++) buildingList[i].name = "";
-    Lot lotList[NUMBER_OF_LOTS];
-    string s = "./webscraper/course_data/csv/AAS.csv";
-    ifstream file(s);
-    readFile(file, buildingList);
-    file.close();
-    writeOutput(buildingList);
+    
+    for(int i = 0; i < NUMBER_OF_BUILDINGS; i++) 
+        buildingList[i].name = "";
+   
+    /* open list of all courses */
+    string path = "./data/courses.txt";
+    string prefix;
+    vector<string> courseList;
+    ifstream file(path);
+   
+    /* hold all courses in courseList */ 
+    while(file.good()){
+        getline(file,prefix,' ');
+        if (prefix == "." || prefix == "..")
+            continue;
+        courseList.push_back(prefix);
+    }
+
+    /* execute for each file */
+    path = "./webscraper/course_data/csv/";
+
+    for (int i = 0; i < courseList.size(); i++){
+        file.open(path + courseList[i]);
+        
+        readFile(file, buildingList);
+
+        file.close();
+        writeOutput(buildingList);
+    }
+
     buildingList = NULL;
     delete[] buildingList;
     return 0;
 }
 
 void writeOutput(Building *buildingList){
+  cout << "started writeOutput\n";
   for(int i = 0; i < NUMBER_OF_BUILDINGS; i++){
     ofstream curBuildingOutput("./data/buildingFrequency/" + buildingList[i].name + ".txt");
     for(int j = 0; j < NUMBER_OF_HOURS; j++){
       for(int k = 0; k < NUMBER_OF_DAYS; k++)
         curBuildingOutput << buildingList[i].numStudents[j][k] << " ";
-      cout << endl;
     }
     curBuildingOutput.close();
   }
@@ -68,11 +93,16 @@ void writeOutput(Building *buildingList){
 void readFile(ifstream& file, Building* buildingList)
 /* reads CSV file and holds data in structs */
 {
+    cout << "started readFile\n";
     string value;
     //reading through explanatory first two rows
-    for (int i = 0; i < 57; i++) getline(file,value,',');
+    //aka: trash garbage rows
+    for (int i = 0; i < 57; i++) 
+        getline(file,value,',');
+    
     getline(file,value); /* clear last one */
 
+    /* iterate through columns */
     for(int i = 0; file.good(); i++){
         getline(file,value,',');
         if(neededData(i)) {
@@ -85,9 +115,15 @@ void readFile(ifstream& file, Building* buildingList)
 
 bool neededData(int selection)
 {
+  cout << "started neededData\n";
+  cout << "selection: " << selection << endl;
   if(selection == DAYS_COL || selection == TIME_COL || selection == ACT_COL ||
     selection == XLACT_COL || selection == INSTRUCTOR_COL || selection == LOCATION_COL)
+  {
+
+     cout << "exit neededData\n";
      return true;
+  }
   return false;
 }
 
@@ -95,7 +131,8 @@ bool neededData(int selection)
 void storeStudentCount(ifstream& file, string value, Building*  buildingList, int selection)
 /*Data given is the days of the week */
 {
-  string daysOfWeek = value, start_endTime, instructor, classLoc, buildingName;
+  cout << "started storeStudentCount\n";
+  string daysOfWeek = value, start_endTime, instructor, classLoc, buildingName, timeCompact;
   bool nightTime;
   int studentCount = 0, lowerBound, upperBound, curBuilding = 0;
   for(int itemsAdded = 0; selection < 18; selection++){
@@ -121,23 +158,32 @@ void storeStudentCount(ifstream& file, string value, Building*  buildingList, in
       itemsAdded++;
     }
   }
+  /* do not track online courses */
   if(instructor[0] == 'R' && instructor[1] == 'O' && instructor[2] == 'D' &&
       instructor[3] == 'P') return;
 
-  buildingName[0] = start_endTime[0];
-  buildingName[1] = start_endTime[1];
-  lowerBound = atoi(buildingName.c_str());
+  timeCompact += start_endTime[0];
+  timeCompact += start_endTime[1];
+  
+  timeCompact += start_endTime[9];
+  timeCompact += start_endTime[10];
+  
+  lowerBound = atoi(timeCompact.c_str());
   nightTime = (start_endTime[6] == 'A') ? false : true;
-  buildingName[0] = start_endTime[9];
-  buildingName[1] = start_endTime[10];
+
   int hour = (nightTime) ? lowerBound + 12: lowerBound;
-  upperBound = atoi(buildingName.c_str()) + 1;
-  for(int i = 0; classLoc[i] != ' '; i++) buildingName[i] = classLoc[i];
+  upperBound = atoi(timeCompact.c_str()) + 1;
+  
+  for(int i = 0; classLoc[i] != ' '; i++) 
+      buildingName += classLoc[i];
+  
   while(buildingList[curBuilding].name != buildingName && buildingList[curBuilding].name != ""
-        && curBuilding < NUMBER_OF_BUILDINGS) curBuilding++;
+        && curBuilding < NUMBER_OF_BUILDINGS) 
+      curBuilding++;
+  
   buildingList[curBuilding].name = buildingName;
+  
   for(int curDay = 0; curDay < daysOfWeek.length(); curDay++){
-    cout << "hey" << endl;
     switch (daysOfWeek[curDay]){
       case 'M': // col 0
         updateBuildingList(buildingList, curBuilding, hour, 0, lowerBound, upperBound, studentCount);
@@ -158,14 +204,20 @@ void storeStudentCount(ifstream& file, string value, Building*  buildingList, in
         return;
     }
   }
-  cout << "hey3" << endl;
 }
 
 void updateBuildingList(Building* buildingList, int curBuilding, int hour, int day, int lowerBound, int upperBound, int stuCount){
+  cout << "started updateBuildingList\n";
   int timesToUpdate;
-  cout << "hey2" << endl;
   buildingList[curBuilding].numStudents[hour][day] = stuCount;
-  if(upperBound < lowerBound) timesToUpdate = 12 - lowerBound + upperBound;
-  else timesToUpdate = upperBound - lowerBound;
-  for(int i = 0; i <= timesToUpdate; i++) buildingList[curBuilding].numStudents[hour][day] = stuCount;
+  if(upperBound < lowerBound) 
+      timesToUpdate = 12 - lowerBound + upperBound;
+  else 
+      timesToUpdate = upperBound - lowerBound;
+  for(int i = 0; i <= timesToUpdate; i++){
+      
+      if (curBuilding < NUMBER_OF_BUILDINGS && hour < NUMBER_OF_HOURS && day < NUMBER_OF_DAYS)
+        buildingList[curBuilding].numStudents[hour][day] = stuCount;
+
+  }
 }
