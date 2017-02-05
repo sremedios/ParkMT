@@ -96,18 +96,8 @@ void CalculateDistances(int buildPos[BLD][2],int lotPos[LOT][3], float
     for(int i = 0; i < LOT; i++)
         for(int j = 0; j < BLD; j++)
         {
-            x1 = buildPos[i][0];
-            x2 = lotPos[j][0];
-            delX = x2 - x1;
-            delX *= delX;
-            y1 = buildPos[i][1];
-            y2 = lotPos[j][1];
-            delY = y2 - y1;
-            delY *= delY;
-            takeTheSquareRootOfThis = delX + delY;
-            distances[i][j] = sqrt(takeTheSquareRootOfThis);
-            //distances[i][j] = sqrt(pow(buildPos[i][0]-lotPos[j][0], 2) +
-             //       pow(buildPos[i][1] - lotPos[j][1], 2));
+            distances[i][j] = sqrt(pow((lotPos[i][0]-buildPos[j][0]),2) +
+                    pow((lotPos[i][1]-buildPos[j][1]),2));
         }
 
     return;
