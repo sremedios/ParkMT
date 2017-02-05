@@ -80,11 +80,15 @@ int main(){
 
 void writeOutput(Building *buildingList){
   //cout << "started writeOutput\n";
+  string outName;
   for(int i = 0; i < NUMBER_OF_BUILDINGS; i++){
-    ofstream curBuildingOutput("./data/buildingFrequency/" + buildingList[i].name + ".txt");
+    outName = "./data/buildingFrequency/" + buildingList[i].name + ".txt";
+    cout << outName << endl;
+    ofstream curBuildingOutput(outName);
     for(int j = 0; j < NUMBER_OF_HOURS; j++){
       for(int k = 0; k < NUMBER_OF_DAYS; k++)
         curBuildingOutput << buildingList[i].numStudents[j][k] << " ";
+      curBuildingOutput << endl;
     }
     curBuildingOutput.close();
   }
@@ -107,7 +111,7 @@ void readFile(ifstream& file, Building* buildingList)
     for(int i = 0; file.good(); i++){
         getline(file,value,',');
         if(neededData(i)) {
-          cout << value << endl;
+        //  cout << value << endl;
           storeStudentCount(file, value, buildingList, i);
           i = 0;
           if (file.good()) getline(file, value, ',');
