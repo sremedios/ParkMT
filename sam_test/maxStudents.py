@@ -27,13 +27,13 @@ for f in filenames:
             if tmpTime.split()[0] == "TBA":
                 continue
             if tmpTime[7:9] == "pm":
-                time.append(int(tmpTime[0:2]))
-            else:
                 time.append(int(tmpTime[0:2]) + 12)
-            if tmpTime[-2]+tmpTime[-1] == "pm":
-                time.append(int(tmpTime[-8:-6]))
             else:
+                time.append(int(tmpTime[0:2]))
+            if tmpTime[-2]+tmpTime[-1] == "pm":
                 time.append(int(tmpTime[-8:-6]) + 12)
+            else:
+                time.append(int(tmpTime[-8:-6]))
             # time[0] is start time, time[1] is end time
 
             days = df.iloc[row,8]
@@ -66,5 +66,23 @@ for day in range(5):
     total = 0
 
 
-print(max(TotalStudentsPerDay))
-print(sum(TotalStudentsPerDay)/5)
+# print(TotalStudentsPerDay.index(max(TotalStudentsPerDay)))
+
+total = 0
+TotalStudentsInBuildings = []
+for day in range(5):
+    for hour in range(24):
+        for room in buildings:
+            total += buildings[room][hour][day]
+        TotalStudentsInBuildings.append(total)
+        total = 0
+
+    print("Day:",day)
+    print(TotalStudentsInBuildings.index(max(TotalStudentsInBuildings)))
+    print(sum(TotalStudentsInBuildings))
+
+    TotalStudentsInBuildings = []
+    total = 0
+
+
+# print(sum(TotalStudentsPerDay)/5)
