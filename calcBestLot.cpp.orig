@@ -74,8 +74,19 @@ int main(){
         readFile(file, buildingList);
 
         file.close();
-        writeOutput(buildingList);
     }
+
+    for(int i = 0; i < NUMBER_OF_BUILDINGS; i++){
+        for(int j = 0; j < NUMBER_OF_HOURS; j++){
+          for(int k = 0; k < NUMBER_OF_DAYS; k++)
+            cout << buildingList[i].numStudents[j][k] << " ";
+          cout << endl;
+        }
+    }
+
+
+
+    writeOutput(buildingList);
 
     buildingList = NULL;
     delete[] buildingList;
@@ -118,9 +129,13 @@ void readFile(ifstream& file, Building* buildingList)
             //cout << value << endl;
 
         if(neededData(i)) {
+<<<<<<< HEAD
+        //  cout << value << endl;
+=======
           //cout << value << endl;
           if (value == "Prevention")
               continue;
+>>>>>>> fd7e94e27d18317531e3a73f0ab2c17c20efe549
           storeStudentCount(file, value, buildingList, i);
           i = 0;
           if (file.good()) getline(file, value, ',');
