@@ -4,7 +4,7 @@ from os import listdir
 from os.path import isfile,join
 from math import isnan
 
-path = "./webscraper/course_data/csv/"
+path = "../webscraper/course_data/csv/"
 filenames = [f for f in listdir(path) if isfile(join(path,f))]
 
 buildings = {}
@@ -37,16 +37,16 @@ for f in filenames:
             # time[0] is start time, time[1] is end time
 
             days = df.iloc[row,8]
-            for day in range(len(days)):
-                if days[day] == 'M':
+            for day in days:
+                if day == 'M':
                     dayIndex = 0
-                if days[day] == 'T':
+                if day == 'T':
                     dayIndex = 1
-                if days[day] == 'W':
+                if day == 'W':
                     dayIndex = 2
-                if days[day] == 'R':
+                if day == 'R':
                     dayIndex = 3
-                if days[day] == 'F':
+                if day == 'F':
                     dayIndex = 4
                 if not isnan(float(df.iloc[row,11])):
                     for hour in range(time[0]-1,time[1]):
@@ -56,11 +56,13 @@ for f in filenames:
                     for hour in range(time[0]-1,time[1]):
                         buildings[room][hour][dayIndex] += int(df.iloc[row,14])
 
-with open("RyansDesires.txt","w") as f:
-    for room in buildings:
-        f.write(room)
-        f.write("\n")
+TotalStudentsPerDay = []
+total = 0
+for room in buildings:
+    for day in range(5):
         for hour in range(24):
-            for day in range(5):
-                f.write(str(buildings[room][hour][day]))
-                f.write("\n")
+            total += 3*buildings[room][hour][day]
+        TotalStudentsPerDay.append(total)
+        total = 0
+
+print(max(TotalStudentsPerDay))

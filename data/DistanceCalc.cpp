@@ -20,17 +20,18 @@ void ReadFiles(int buildPos[BLD][2], int lotPos[LOT][3],
 void CalculateDistances(int buildPos[BLD][2], int lotPos[LOT][3], float
         distances[LOT][BLD]);
 void WriteFile(string buildingCollect[BLD], string lotCollect[LOT],
-      string garbageCollect1, string garbageCollect2, float distances[LOT][BLD]);
+      string garbageCollect1, string garbageCollect2, float
+      distances[LOT][BLD]);
 
 int main()
 {
-    string    garbageCollect1,
-              garbageCollect2,
-              buildingCollect[BLD],
-              lotCollect[LOT];
-    int       buildPos[BLD][2],
-              lotPos[LOT][3];
-    float     distances[LOT][BLD];
+    string garbageCollect1,
+           garbageCollect2,
+           buildingCollect[BLD],
+           lotCollect[LOT];
+    int    buildPos[BLD][2],
+           lotPos[LOT][3];
+    float  distances[LOT][BLD];
 
     ReadFiles(buildPos, lotPos, buildingCollect, lotCollect, garbageCollect1,
               garbageCollect2);
@@ -60,6 +61,7 @@ void ReadFiles(int buildPos[BLD][2], int lotPos[LOT][3],
 
         for(int j = 0; j < 2; j++)
             inFile1 >> buildPos[i][j];
+
     }
     for(int i = 0; i < LOT; i++)
     {
@@ -69,27 +71,41 @@ void ReadFiles(int buildPos[BLD][2], int lotPos[LOT][3],
             inFile2 >> lotPos[i][j];
     }
 
+//    for(int i = 0; i < LOT; i++)
+ //       std::cout << lotPos[i][0] << " " << lotPos[i][1] << " " << lotPos[i][2]
+  //                << std::endl;
 
+    return;
 }
 
 void CalculateDistances(int buildPos[BLD][2],int lotPos[LOT][3], float
         distances[LOT][BLD])
 {
+    int delX,
+        x1,
+        x2,
+        y1,
+        y2,
+        delY,
+        takeTheSquareRootOfThis;
+
+    for(int i = 0; i < LOT; i++)
+        std::cout << lotPos[i][0] << " " << lotPos[i][1] << " " << lotPos[i][2]
+                  << std::endl;
+
     for(int i = 0; i < LOT; i++)
         for(int j = 0; j < BLD; j++)
         {
-            distances[i][j] = sqrt(((buildPos[i][0] -
-                            lotPos[j][0])*(buildPos[i][0] - lotPos[j][0])) +
-                    ((buildPos[i][1] - lotPos[j][1])* (buildPos[i][1] -
-                        lotPos[j][1])));
-
+            distances[i][j] = sqrt(pow((lotPos[i][0]-buildPos[j][0]),2) +
+                    pow((lotPos[i][1]-buildPos[j][1]),2));
         }
 
     return;
 }
 
 void WriteFile(string buildingCollect[BLD], string lotCollect[LOT],
-        string garbageCollect1, string garbageCollect2, float distances[LOT][BLD])
+        string garbageCollect1, string garbageCollect2, float
+        distances[LOT][BLD])
 {
     ofstream outFile,
              SamsDesires;
@@ -115,5 +131,9 @@ void WriteFile(string buildingCollect[BLD], string lotCollect[LOT],
                     << lotCollect[i] << endl;
     for(int i = BLD - LOT - 1; i < BLD; i++)
         SamsDesires << buildingCollect[i] << endl;
+
+    outFile.close();
+    SamsDesires.close();
+
     return;
 }

@@ -72,90 +72,12 @@ void ReadFiles(ParkingLot lotArray[LOT], Building bldArray[BLD],
 {
     ifstream   inFile1,
                inFile2,
-               inFile3,
-               inFile4,
-               inFile5,
-               inFile6,
-               inFile7,
-               inFile8,
-               inFile9,
-               inFile10,
-               inFile11,
-               inFile12,
-               inFile13,
-               inFile14,
-               inFile15,
-               inFile16,
-               inFile17,
-               inFile18,
-               inFile19,
-               inFile20,
-               inFile21,
-               inFile22,
-               inFile23,
-               inFile24,
-               inFile25,
-               inFile26,
-               inFile27,
-               inFile28,
-               inFile29,
-               inFile30,
-               inFile31,
-               inFile32,
-               inFile33,
-               inFile34,
-               inFile35,
-               inFile36,
-               inFile37,
-               inFile38,
-               inFile39,
-               inFile40,
-               inFile41,
-               inFile42;
+               inFile3;
     string     trashCollect;
 
     inFile1.open("parkinglots.dat");
     inFile2.open("buildingToLotDistance.dat");
-    inFile3.open("PCS.txt");
-    inFile4.open("FAIR.txt");
-    inFile5.open("EHS.txt");
-    inFile6.open("ING.txt");
-    inFile7.open("ALOF.txt");
-    inFile8.open("ALUM.txt");
-    inFile9.open("UP.txt");
-    inFile10.open("HARR.txt");
-    inFile11.open("BH.txt");
-    inFile12.open("JUB.txt");
-    inFile13.open("PH.txt");
-    inFile14.open("KOM.txt");
-    inFile15.open("VET.txt");
-    inFile16.open("AMG.txt");
-    inFile17.open("SFA.txt");
-    inFile18.open("WMB.txt");
-    inFile19.open("JH.txt");
-    inFile20.open("TODD.txt");
-    inFile21.open("WPS.txt");
-    inFile22.open("DSB.txt");
-    inFile23.open("KUC.txt");
-    inFile24.open("FH.txt");
-    inFile25.open("BDA.txt");
-    inFile26.open("CKNB.txt");
-    inFile27.open("LRC.txt");
-    inFile28.open("SCI.txt");
-    inFile29.open("LIB.txt");
-    inFile30.open("BAS.txt");
-    inFile31.open("SAG.txt");
-    inFile32.open("HMA.txt");
-    inFile33.open("TCM.txt");
-    inFile34.open("HOB.txt");
-    inFile35.open("TLC.txt");
-    inFile36.open("MB.txt");
-    inFile37.open("BRAGG.txt");
-    inFile38.open("COE.txt");
-    inFile39.open("VA.txt");
-    inFile40.open("HC.txt");
-    inFile41.open("GH.txt");
-    inFile42.open("HONR.txt");
+    inFile3.open("RyansDesires.txt");
 
     getline(inFile1, trashCollect);
     getline(inFile2, trashCollect);
@@ -167,7 +89,6 @@ void ReadFiles(ParkingLot lotArray[LOT], Building bldArray[BLD],
         for(int j = 0; j < COL; j++)
             inFile1 >> trashCollect;
         inFile1 >> lotArray[i].capacity;
-//        cout << lotArray[i].lotId << " " << lotArray[i].capacity << endl;
     }
 
     for(int i = 0; i < LOT; i++)
@@ -175,19 +96,21 @@ void ReadFiles(ParkingLot lotArray[LOT], Building bldArray[BLD],
         inFile2 >> trashCollect;
         inFile2 >> trashCollect;
         for(int j = 0; j < BLD; j++)
-        {
             inFile2 >> distanceFromLot[i][j];
-            //cout << distanceFromLot[i][j] << " ";
-        }
-        //cout << endl;
     }
 
     for(int i = 0; i < BLD; i++)
     {
-        inFile2 >> bldArray[i].bldId;
-        cout << bldArray[i].bldId << endl;
+        inFile3 >> bldArray[i].bldId;
+        for(int j = MON; j < FRI; j++)
+            inFile3 >> bldArray[i].occupancy[j];
+
+        cout << bldArray[i].bldId << endl << "-----------------------" << endl;
+        for(int j = MON; j < FRI; j++)
+            cout << bldArray[i].occupancy[j] << " ";
+        cout << endl;
     }
-    return;
+
 }
 
 float Gamma(string lotId, float distanceFromLot, float time, char day)
