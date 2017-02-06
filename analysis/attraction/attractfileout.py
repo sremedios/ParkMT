@@ -37,10 +37,10 @@ def write_to_file(att):
         out_file = open(filename,'w')
         for p in range(len(parking_lots)):
             p_name = parking_lots[p][0]
-            out_file.write(p_name)
+            out_file.write(p_name+"\n")
             for t in range(24):
                 for d in range(5):
-                    out_file.write(format(att[d][t][b][p],'8'))
+                    out_file.write(format(att[d][t][b][p],'8')+"\n")
 
 # Generate all atractions normalized
 # attract[day][time][building_index][lot_index]
