@@ -1,68 +1,70 @@
-# model.py BY Ben Burton for ParkMT at MTHacks
+# attractfileout.py BY Ben Burton for ParkMT at MTHacks
+#
 # This program will determine the attraction value for a parking lot on
 # MTSU campus based on its location, the population of nearby buildings,
-# and the amount of spots in the parking spot.
+# and the amount of spots in the parking spot. This version will write
+# this info to the ouput folder, with a file for each building.
 
 from math import exp
 
-#the no no variables
+#the no no global variables
 parking_lots = []
 buildings = []
 populations={}
- 
+dist = {} 
 def main():
     # Open lot and building position data files and convert to arrays
     global parking_lots
     global buildings
     global populations
+    global dist
 
-    parking_lots=get_array("../../data/parkinglots.dat")
-    buildings =  get_array("../../data/buildings.dat")
-    populations =get_pop_dict("RyansDesires.txt")
-        
-#    day, time, destination = get_user_input()
-#    day, time, destination = 1, 12, 19
+    parking_lots= get_array("../../data/parkinglots.dat")
+    buildings   = get_array("../../data/buildings.dat")
+    populations = get_pop_dict("RyansDesires.txt")
+    dist = get_dist_array()
+
+    attract = get_attract_array()
+    write_to_file(attract)    
+
 #filename is building
 #first line parking lot
-#groups of 5 weekday at hour    
+#groups of 5 weekday at hour
+def write_to_file(att):
+    for b in range(len(buildings)):
+        b_name = buildings[b][0]
+        filename = "output/"+b_name+".txt"
+        out_file = open(filename,'w')
+        for p in range(len(parking_lots)):
+            p_name = parking_lots[p][0]
+            out_file.write(p_name)
+            for t in range(24):
+                for d in range(5):
+                    out_file.write(format(att[d][t][b][p],'8'))
 
-    #all atraction ratios
-    for building in buildings:
-        filename = "output/"+building[0]+".txt"
-        output_file = open(filename,'w')
-        for lot in parking_lots:
-            output_file.write(lot[0]+"\n")
-            print(lot[0])
-            for time in range(24):
-                for day in range(5):
-                    # get attractiveness of each lot based on input
-                    attractions = {}
-                    for lots in parking_lots:
-                        lot_name = lots[0]
-                        attractions[lot_name] = attractiveness(lots, building, time, day)
+# Generate all atractions normalized
+# attract[day][time][building_index][lot_index]
+def get_attract_array():
+    d_list = []
+    for d in range(5):
+        t_list = []
+        for t in range(24):
+            b_list = []
+            for b in range(len(buildings)):
+                p_list = []
+                for p in range(len(parking_lots)):
+                    att = attractiveness(p,b,t,d)
+                    p_list.append(att)
+                b_list.append(normalize(p_list))
+            t_list.append(b_list)
+        d_list.append(t_list)
+    return d_list
 
-            
-                    # sort by attraction
-                    sorted_attractions = sorted(attractions.items(), key=lambda kv: kv[1], reverse=True)
-            
-                    # normalize
-                    min_attract = sorted_attractions[-1][-1]
-                    max_attract = sorted_attractions[0][1] - min_attract
+# This will normalize a list so that the values  fall from 0 to 1
+def normalize(alist):
+    small, large = min(alist), max(alist)
+    return [(x-small)/(large-small) for x in alist]
 
-#                    print((attractions[lot_name]-min_attract)/max_attract)
-                    out = format((attractions[lot_name]-min_attract)/max_attract,".4f")
-#                    print(out)
-                    output_file.write(out+"\n")
-        output_file.close()   
-
-'''
-    print(final_attract)
-    # ouput building ranked by attraction
-    weekday = "MTWRF"
-    print("On",weekday[day],"at",time,"going to",buildings[destination][0],"these lots have these attractions:")
-    for i in range(len(final_attract)):
-        print(format(i+1,'2'),format(final_attract[i][0],'15'),format(final_attract[i][1],'>8.2f'))
-'''
 # This function takes the input files and turn them in to arrays.
 # Each element corresponds to one building or parking lot.
 # building[i]     = ["name", x, y]
@@ -102,6 +104,17 @@ def get_pop_dict(filename):
     in_file.close()
     return dict1
 
+# This function will create an array of every distance in our data.
+# acces along lines of dist[parking_index][building_index]
+def get_dist_array():
+    dist_array = []
+    for p in parking_lots:
+        dist_list = []
+        for b in buildings:
+            dist_list.append(get_distance(b,p))
+        dist_array.append(dist_list)
+    return dist_array
+
 
 # This function will get the distance between two spots of the map.
 # distance = sqrt([x1-x2]^2+[y1-y2]^2)
@@ -114,50 +127,11 @@ def get_distance(place1, place2):
     distance = ((x1-x2)**2 + (y1-y2)**2)**0.5
     return distance
 
-# Ask user for day, time, and building. building should be number.
-def get_user_input():
-    # initialize with sentinel values
-    day, time, destination= -1, -1, -1
-    
-    # Get day. M=0, T=1, ... , F=4
-    while day == -1:
-        day = input("Enter day of week (M T W R F): ")
-        day = "MTWRF".find(day)
-        if day ==-1:
-            print("Please input M, T, W, R, or F!")
-    
-    # Get time
-    while (time < 6) or (time > 18):
-        time = input("What time do will you arrive on campus? (24hr, enter integer from 6 through 18): ")
-        try:   # I hope the at least put a number in
-            time = int(time)
-        except: # if user is dumb
-            time = -1
-        if (time < 6) or (time > 18):
-            print("Please input a whole number between 6 and 18!")
-    
-    # Ouput building list:
-
-    for i in range(0,len(buildings)//2):
-        print(format(i+1,'2'),". ",format(buildings[i][0],'6'),sep='',end='')
-        print(format(len(buildings)//2+i+1,'2'),". ",buildings[len(buildings)//2+i][0],sep='')
-    # Get building number. Note that the user list is not zero origin index!
-    while (destination<1) or (destination>len(buildings)):
-        destination = input("Please select the number corresponding to your destination: ")
-        try:    # I hope the at least put a number in
-            destination = int(destination)
-        except: # if user is dumb
-            destination = -1
-        if (destination<1) or (destination>len(buildings)):
-            print("Please input a number from the list")
-    
-    return day, time, destination - 1
-
 # This function will return the rating of a parking lot given a building destination and time.
 # lot = parking_lots[i]
 # destination = buildings[i]
 def attractiveness(lot,destination,time,day):
-    capacity = lot[2]
+    capacity = parking_lots[lot][2]
     attraction = distance_preference(lot,destination) * available_parking(lot, time, day) #/ capacity
     return attraction
 
@@ -166,7 +140,7 @@ def attractiveness(lot,destination,time,day):
 # domain is 0 < y < 1
 def distance_preference(lot, destination):
     A = 10.0  # This is a parameter we can play with
-    distance = get_distance(lot, destination)
+    distance = dist[lot][destination]
     preference = 1/(A*distance/5280.0 + 1.0)
     #B = .75
     #walkfar = 5280/2
@@ -176,24 +150,23 @@ def distance_preference(lot, destination):
 # This function returns a calculated value for amount of spots available.
 # Value returned can be negative. Might change and make it return 0 if negative
 def available_parking(lot, time, day):
-    capacity = lot[2]
+    capacity = parking_lots[lot][2]
     # sum up all that may be parked
     total_parked = 0
-    for building in buildings:
-        total_parked += parked(lot, building, time, day)
+    for b in range(len(buildings)):
+        total_parked += parked(lot, b, time, day)
 
     available = capacity - total_parked
     return available
 
 # This function will predict how many people from a building will be parked in a particular lot
 def parked(lot, building, time, day):
-    distance = get_distance(lot, building)
+    distance = dist[lot][building]
     pop = population(building, time, day)
     # Sum up total distance of all paths from every parking lot to a building.
     total_distance = 0
-    for lot in parking_lots:
-#        print(lot,building)
-        total_distance += get_distance(lot, building)
+    for p in range(len(parking_lots)):
+        total_distance += dist[p][building]
     
     parkers = pop * (1 - distance / total_distance)
     return parkers
