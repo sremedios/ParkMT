@@ -1,3 +1,4 @@
+
 # attractfileout.py BY Ben Burton for ParkMT at MTHacks
 #
 # This program will determine the attraction value for a parking lot on
@@ -6,6 +7,7 @@
 # this info to the ouput folder, with a file for each building.
 
 from math import exp
+import datetime
 
 #the no no global variables
 parking_lots = []
@@ -18,13 +20,14 @@ def main():
     global buildings
     global populations
     global dist
-
-    parking_lots= get_array("../../data/parkinglots.dat")
-    buildings   = get_array("../../data/buildings.dat")
-    populations = get_pop_dict("RyansDesires.txt")
+#    print("calc",datetime.datetime.now().time())
+    parking_lots = get_array("../../data/parkinglots.dat")
+    buildings    = get_array("../../data/buildings.dat")
+    populations  = get_pop_dict("RyansDesires.txt")
     dist = get_dist_array()
 
     attract = get_attract_array()
+#    print("write",datetime.datetime.now().time())
     write_to_file(attract)    
 
 #filename is building
@@ -40,7 +43,7 @@ def write_to_file(att):
             out_file.write(p_name+"\n")
             for t in range(24):
                 for d in range(5):
-                    out_file.write(format(att[d][t][b][p],'8')+"\n")
+                    out_file.write(str(att[d][t][b][p])+"\n")
 
 # Generate all atractions normalized
 # attract[day][time][building_index][lot_index]
@@ -55,7 +58,8 @@ def get_attract_array():
                 for p in range(len(parking_lots)):
                     att = attractiveness(p,b,t,d)
                     p_list.append(att)
-                b_list.append(normalize(p_list))
+                p_list = normalize(p_list)
+                b_list.append(p_list)
             t_list.append(b_list)
         d_list.append(t_list)
     return d_list
@@ -63,7 +67,8 @@ def get_attract_array():
 # This will normalize a list so that the values  fall from 0 to 1
 def normalize(alist):
     small, large = min(alist), max(alist)
-    return [(x-small)/(large-small) for x in alist]
+    normlist = [round((x-small)/(large-small),4) for x in alist]
+    return normlist
 
 # This function takes the input files and turn them in to arrays.
 # Each element corresponds to one building or parking lot.
@@ -88,20 +93,18 @@ def get_array(filename):
 # dict[building_name][day][hour]
 def get_pop_dict(filename):
     dict1 = {}
-    in_file = open(filename,"r")
+    pop_file = open(filename,"r")
 
-    building = in_file.readline().strip()
-    while building != '':
-        days = [[],[],[],[],[]]
+    bname = pop_file.readline().strip()
+    while bname != '':
+        days = [([]) for x in range(5)]
         for i in range(24):
             for j in range(5):
-                popval = in_file.readline()
-                days[j].append(int(popval))
-        dict1[building] = days
-        days = []
-        building = in_file.readline().strip()
-
-    in_file.close()
+                popval = int(pop_file.readline())
+                days[j].append(popval)
+        dict1[bname] = days
+        bname = pop_file.readline().strip()
+    pop_file.close()
     return dict1
 
 # This function will create an array of every distance in our data.
@@ -131,7 +134,7 @@ def get_distance(place1, place2):
 # lot = parking_lots[i]
 # destination = buildings[i]
 def attractiveness(lot,destination,time,day):
-    capacity = parking_lots[lot][2]
+    #capacity = parking_lots[lot][2]
     attraction = distance_preference(lot,destination) * available_parking(lot, time, day) #/ capacity
     return attraction
 
@@ -177,7 +180,7 @@ def parked(lot, building, time, day):
 # populations[building_name][day][hour]
 def population(building, time, day):
     pop_total = attempt_pop_read(building, time, day)
-#    for i in range(1,4):
+#    for i in range(1,4):     #Add in amounts from nearby times
 #        pop_total += attempt_pop_read(building, time+i, day)/(3**i)
 #        pop_total += attempt_pop_read(building, time-i, day)/(3**i)
     a_rate = 0.9  # attendence
@@ -187,7 +190,7 @@ def population(building, time, day):
 
 def attempt_pop_read(building, time, day):
     try:   # See if we have data for building
-        pop = populations[building[0]][day][time]
+        pop = populations[buildings[building][0]][day][time]
     except:
         return 0
     return pop
