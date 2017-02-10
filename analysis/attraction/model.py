@@ -20,8 +20,8 @@ def main():
     buildings =  get_array("../../data/buildings.dat")
     populations =get_pop_dict("RyansDesires.txt")
         
-#    day, time, destination = get_user_input()
-    day, time, destination = 1, 12, 19
+    day, time, destination = get_user_input()
+#    day, time, destination = 1, 12, 19
 
     # get attractiveness of each lot based on input
     attractions = {}
@@ -81,7 +81,6 @@ def get_pop_dict(filename):
                 popval = in_file.readline()
                 days[j].append(int(popval))
         dict1[building] = days
-        days = []
         building = in_file.readline().strip()
 
     in_file.close()
